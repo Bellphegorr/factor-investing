@@ -3,6 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A000290A-1BF4-42CD-AF49-D69B62481D98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{6A4ED10B-76CB-47A9-B983-B786CD477DBD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{8CC8602C-AF67-42EC-B226-238030E95BF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorInvesting.Modules.Assets.Domain", "src\Modules\Assets\Domain\FactorInvesting.Modules.Assets.Domain.csproj", "{CFF3B3A7-02F1-4652-8952-B62B917A4FA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BEB5C2BC-91BC-4209-893B-DE46E7210C5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{78F2BE33-38BE-435C-ACF3-E246D83B1FC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorInvesting.Modules.Assets.Tests.UnitTests.Domain", "src\Modules\Assets\Tests\UnitTests\Domain\FactorInvesting.Modules.Assets.Tests.UnitTests.Domain.csproj", "{26FB03B7-CAA2-4FE2-8BF0-3E808A1B9A9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +24,23 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFF3B3A7-02F1-4652-8952-B62B917A4FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF3B3A7-02F1-4652-8952-B62B917A4FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF3B3A7-02F1-4652-8952-B62B917A4FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF3B3A7-02F1-4652-8952-B62B917A4FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26FB03B7-CAA2-4FE2-8BF0-3E808A1B9A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26FB03B7-CAA2-4FE2-8BF0-3E808A1B9A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26FB03B7-CAA2-4FE2-8BF0-3E808A1B9A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26FB03B7-CAA2-4FE2-8BF0-3E808A1B9A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6A4ED10B-76CB-47A9-B983-B786CD477DBD} = {A000290A-1BF4-42CD-AF49-D69B62481D98}
+		{8CC8602C-AF67-42EC-B226-238030E95BF3} = {6A4ED10B-76CB-47A9-B983-B786CD477DBD}
+		{CFF3B3A7-02F1-4652-8952-B62B917A4FA4} = {8CC8602C-AF67-42EC-B226-238030E95BF3}
+		{BEB5C2BC-91BC-4209-893B-DE46E7210C5D} = {8CC8602C-AF67-42EC-B226-238030E95BF3}
+		{78F2BE33-38BE-435C-ACF3-E246D83B1FC6} = {BEB5C2BC-91BC-4209-893B-DE46E7210C5D}
+		{26FB03B7-CAA2-4FE2-8BF0-3E808A1B9A9D} = {78F2BE33-38BE-435C-ACF3-E246D83B1FC6}
 	EndGlobalSection
 EndGlobal
