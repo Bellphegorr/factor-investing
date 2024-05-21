@@ -1,6 +1,8 @@
+using FactorInvesting.BuildingBlocks.Domain;
+
 namespace FactorInvesting.Modules.Assets.Domain.Securities;
 
-public class Security
+public class Security: IAggregateRoot
 {
     public Guid Id { get; }
     public string Name { get; }
