@@ -1,11 +1,15 @@
 using FactorInvesting.Modules.Assets.Domain.Securities;
+using FactorInvesting.Modules.Assets.Infrastructure.Persistence;
 
 namespace FactorInvesting.Modules.Assets.Infrastructure.Domain.Securities;
 
-public class SecuritiesRepository : ISecurityRepository
+internal class SecuritiesRepository(AssetsDbContext context) : ISecurityRepository
 {
-    public Task AddAsync(Security security)
+    private readonly AssetsDbContext _context = context;
+
+    public async Task AddAsync(Security security)
     {
-        throw new NotImplementedException();
+        await _context.Securities.AddAsync(security);
+        await _context.SaveChangesAsync();
     }
 }
