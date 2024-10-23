@@ -3,9 +3,9 @@ using FactorInvesting.Modules.Assets.Infrastructure.Persistence;
 
 namespace FactorInvesting.Modules.Assets.Infrastructure.Domain.Securities;
 
-internal class SecuritiesRepository(AssetsDbContext context) : ISecurityRepository
+internal class SecuritiesRepository(AssetsContext context) : ISecurityRepository
 {
-    private readonly AssetsDbContext _context = context;
+    private readonly AssetsContext _context = context;
 
     public async Task AddAsync(Security security)
     {

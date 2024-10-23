@@ -1,5 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="..\Domain\FactorInvesting.Modules.Assets.Domain.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Infrastructure\FactorInvesting.BuildingBlocks.Infrastructure.csproj" />
+    <ProjectReference Include="..\Application\FactorInvesting.Modules.Assets.Application.csproj" />
   </ItemGroup>
 </Project>
