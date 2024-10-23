@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{A3B86147-A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorInvesting.Apps.API", "Apps\API\FactorInvesting.Apps.API.csproj", "{533ED2B9-0365-4D3C-ADDF-17A66599BE38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorInvesting.BuildingBlocks.Infrastructure", "BuildingBlocks\Infrastructure\FactorInvesting.BuildingBlocks.Infrastructure.csproj", "{1C1305EA-31FD-47FE-91F2-DF38B6C87D57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{533ED2B9-0365-4D3C-ADDF-17A66599BE38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{533ED2B9-0365-4D3C-ADDF-17A66599BE38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{533ED2B9-0365-4D3C-ADDF-17A66599BE38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1305EA-31FD-47FE-91F2-DF38B6C87D57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1305EA-31FD-47FE-91F2-DF38B6C87D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1305EA-31FD-47FE-91F2-DF38B6C87D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1305EA-31FD-47FE-91F2-DF38B6C87D57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8CC8602C-AF67-42EC-B226-238030E95BF3} = {6A4ED10B-76CB-47A9-B983-B786CD477DBD}
@@ -78,5 +84,6 @@ Global
 		{823D5F3A-B231-47C3-BC2A-138EDAF58C9C} = {8CC8602C-AF67-42EC-B226-238030E95BF3}
 		{0D0EFD5F-DB2C-4FA6-A92B-3160E81E9379} = {8CC8602C-AF67-42EC-B226-238030E95BF3}
 		{533ED2B9-0365-4D3C-ADDF-17A66599BE38} = {A3B86147-A197-40CB-A06C-22F5C618DC69}
+		{1C1305EA-31FD-47FE-91F2-DF38B6C87D57} = {BEF369AE-0B13-42E8-B61D-9026ACD495AD}
 	EndGlobalSection
 EndGlobal
