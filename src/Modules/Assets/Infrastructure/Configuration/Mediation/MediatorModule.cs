@@ -1,8 +1,10 @@
 using System.Reflection;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using CompanyName.MyMeetings.Modules.Administration.Application.Configuration.Commands;
 using MediatR;
 using MediatR.Pipeline;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FactorInvesting.Modules.Assets.Infrastructure.Configuration.Mediation;
 
@@ -11,6 +13,7 @@ internal sealed class MediatorModule : Autofac.Module
     protected override void Load(ContainerBuilder builder)
     {
         var thisAssembly = typeof(MediatorModule).Assembly;
+        var services = new ServiceCollection();
         var mediatorOpenTypes = new[]
         {
             typeof(IRequestHandler<,>),
@@ -40,5 +43,6 @@ internal sealed class MediatorModule : Autofac.Module
         builder
             .RegisterGeneric(typeof(RequestPreProcessorBehavior<,>))
             .As(typeof(IPipelineBehavior<,>));
+        builder.Populate(services);
     }
 }

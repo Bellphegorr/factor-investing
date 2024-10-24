@@ -1,5 +1,4 @@
 using Autofac;
-using FactorInvesting.Modules.Assets.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace FactorInvesting.Modules.Assets.Infrastructure.Configuration.DataAccess;
@@ -19,8 +18,8 @@ internal sealed class DataAccessModule(string connectionString) : Module
             .As<AssetsContext>()
             .As<DbContext>()
             .InstancePerLifetimeScope();
-
-        builder.RegisterAssemblyTypes(thisAssembly)
+        builder
+            .RegisterAssemblyTypes(thisAssembly)
             .Where(t => t.Name.EndsWith("Repository"))
             .AsImplementedInterfaces()
             .InstancePerLifetimeScope();

@@ -1,6 +1,4 @@
 @HostAddress = http://localhost:8080
 
-GET {{HostAddress}}/weatherforecast/
+POST {{HostAddress}}/api/assets
 Accept: application/json
-
-###

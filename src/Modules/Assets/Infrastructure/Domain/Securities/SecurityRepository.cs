@@ -1,9 +1,8 @@
 using FactorInvesting.Modules.Assets.Domain.Securities;
-using FactorInvesting.Modules.Assets.Infrastructure.Persistence;
 
 namespace FactorInvesting.Modules.Assets.Infrastructure.Domain.Securities;
 
-internal class SecuritiesRepository(AssetsContext context) : ISecurityRepository
+internal class SecurityRepository(AssetsContext context) : ISecurityRepository
 {
     private readonly AssetsContext _context = context;
 
