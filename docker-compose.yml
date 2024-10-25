@@ -1,0 +1,31 @@
+# create a docker file to me
+version: '3.7'
+
+services:
+  api:
+    container_name: factor-investing-api
+    build: 
+      context: ./src/
+    ports:
+      - "5000:8080"
+    networks:
+      - starfish-crm-network
+    depends_on:
+      - database
+    restart: on-failure
+
+  database:
+    container_name: factor-investing-database
+    image: postgres:12
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: factor_investing
+    ports:
+      - "5432:5432"
+    networks:
+      - starfish-crm-network
+    restart: on-failure
+
+networks:
+  starfish-crm-network:
