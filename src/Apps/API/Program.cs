@@ -22,6 +22,9 @@ app.MapControllers();
 Configure();
 app.Run();
 
-static void Configure() {
-    AssetsStartup.Initialize();
+static void Configure()
+{
+    var connectionString =
+        "Server=database;Database=factor_investing;User Id=postgres;Password=postgres;";
+    AssetsStartup.Initialize(connectionString);
 }
