@@ -15,7 +15,7 @@ internal class UserContextFactory : IDesignTimeDbContextFactory<AssetsContext>
         var databaseConnectionString =
             args.Length > 0 ? args[0] : configuration.GetConnectionString("Postgres");
         var optionsBuilder = new DbContextOptionsBuilder<AssetsContext>();
-        optionsBuilder.UseNpgsql(databaseConnectionString);
+        optionsBuilder.UseNpgsql("Server=database;Database=factor_investing;User Id=postgres;Password=postgres;");
         return new AssetsContext(optionsBuilder.Options);
     }
 }
