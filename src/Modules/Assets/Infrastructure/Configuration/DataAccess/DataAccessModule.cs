@@ -1,4 +1,6 @@
 using Autofac;
+using FactorInvesting.BuildingBlocks.Application.Data;
+using FactorInvesting.BuildingBlocks.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace FactorInvesting.Modules.Assets.Infrastructure.Configuration.DataAccess;
@@ -17,6 +19,11 @@ internal sealed class DataAccessModule(string connectionString) : Module
             })
             .As<AssetsContext>()
             .As<DbContext>()
+            .InstancePerLifetimeScope();
+        builder
+            .RegisterType<SqlConnectionFactory>()
+            .As<ISqlConnectionFactory>()
+            .WithParameter("connectionString", connectionString)
             .InstancePerLifetimeScope();
         builder
             .RegisterAssemblyTypes(thisAssembly)
