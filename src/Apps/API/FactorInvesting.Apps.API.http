@@ -1,4 +1,7 @@
 @HostAddress = http://localhost:5000
 
+### Assets
 POST {{HostAddress}}/api/assets
-Accept: application/json
+
+### Assets
+GET {{HostAddress}}/api/assets
