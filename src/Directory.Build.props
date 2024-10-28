@@ -11,7 +11,7 @@
     <RestoreIgnoreFailedSource>true</RestoreIgnoreFailedSource>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-    <!-- <AnalysisMode>Recommended</AnalysisMode> -->
+    <AnalysisMode>Recommended</AnalysisMode>
     <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
     <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
