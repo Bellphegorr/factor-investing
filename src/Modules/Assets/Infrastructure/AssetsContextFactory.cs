@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace FactorInvesting.Modules.Assets.Infrastructure;
 
-internal class UserContextFactory : IDesignTimeDbContextFactory<AssetsContext>
+internal sealed class UserContextFactory : IDesignTimeDbContextFactory<AssetsContext>
 {
     public AssetsContext CreateDbContext(string[] args)
     {

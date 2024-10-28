@@ -3,7 +3,7 @@ using FactorInvesting.Modules.Assets.Domain.Securities;
 
 namespace FactorInvesting.Modules.Assets.Application.Assets.Securities.AddSecurity;
 
-internal class AddSecurityCommandHandler(ISecurityRepository securityRepository)
+internal sealed class AddSecurityCommandHandler(ISecurityRepository securityRepository)
     : ICommandHandler<AddSecurityCommand>
 {
     private readonly ISecurityRepository _securityRepository = securityRepository;

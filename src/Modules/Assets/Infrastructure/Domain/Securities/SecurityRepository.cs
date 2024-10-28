@@ -2,7 +2,7 @@ using FactorInvesting.Modules.Assets.Domain.Securities;
 
 namespace FactorInvesting.Modules.Assets.Infrastructure.Domain.Securities;
 
-internal class SecurityRepository(AssetsContext context) : ISecurityRepository
+internal sealed class SecurityRepository(AssetsContext context) : ISecurityRepository
 {
     private readonly AssetsContext _context = context;
 

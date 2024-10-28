@@ -1,0 +1,32 @@
+<Project>
+  <ItemGroup Condition="$(MSBuildProjectName.EndsWith('API'))">
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+  <ItemGroup Condition="$(MSBuildProjectName.EndsWith('BuildingBlocks.Domain'))">
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+  <ItemGroup Condition="$(MSBuildProjectName.EndsWith('BuildingBlocks.Application'))">
+    <PackageReference Include="Dapper" Version="2.1.35" />
+  </ItemGroup>
+  <ItemGroup Condition="$(MSBuildProjectName.EndsWith('BuildingBlocks.Infrastructure'))">
+    <PackageReference Include="Autofac" Version="8.1.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="2.20.0" />
+    <PackageReference Include="Npgsql" Version="8.0.5" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
+  </ItemGroup>
+  <ItemGroup Condition="$(MSBuildProjectFullPath.Contains('Tests'))">
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.5.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+  </ItemGroup>
+</Project>

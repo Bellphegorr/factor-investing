@@ -27,7 +27,7 @@ internal sealed class DataAccessModule(string connectionString) : Module
             .InstancePerLifetimeScope();
         builder
             .RegisterAssemblyTypes(thisAssembly)
-            .Where(t => t.Name.EndsWith("Repository"))
+            .Where(t => t.Name.EndsWith("Repository", StringComparison.InvariantCulture))
             .AsImplementedInterfaces()
             .InstancePerLifetimeScope();
     }

@@ -4,7 +4,7 @@ using MediatR;
 
 namespace FactorInvesting.Modules.Assets.Infrastructure.Configuration.Processing;
 
-internal class CommandsExecutor
+internal sealed class CommandsExecutor
 {
     internal static async Task ExecuteAsync(ICommand command)
     {

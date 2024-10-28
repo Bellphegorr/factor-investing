@@ -7,7 +7,7 @@ namespace FactorInvesting.Modules.Assets.Tests.UnitTests.Domain.Securities;
 public class SecurityTest
 {
     [Fact]
-    public void Security_Constructor_WithValidParameters_ShouldCreateSecurity()
+    public void SecurityConstructorWithValidParametersShouldCreateSecurity()
     {
         var securityId = Guid.NewGuid();
         var securityName = "SecurityName";
@@ -19,7 +19,7 @@ public class SecurityTest
     }
 
     [Fact]
-    public void Security_Constructor_WithInvalidParameters_ShouldThrowException()
+    public void SecurityConstructorWithInvalidParametersShouldThrowException()
     {
         var securityId = Guid.NewGuid();
         var securityName = "SecurityName";
