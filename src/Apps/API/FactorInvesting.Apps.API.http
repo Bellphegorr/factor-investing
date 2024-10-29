@@ -3,5 +3,5 @@
 ### Assets
 POST {{HostAddress}}/api/assets
 
-### Assets
+### Assets - Get All
 GET {{HostAddress}}/api/assets
