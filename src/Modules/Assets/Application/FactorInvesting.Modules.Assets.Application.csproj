@@ -1,6 +1,1 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\BuildingBlocks\Application\FactorInvesting.BuildingBlocks.Application.csproj" />
-    <ProjectReference Include="..\Domain\FactorInvesting.Modules.Assets.Domain.csproj" />
-  </ItemGroup>
-</Project>
+﻿<Project Sdk="Microsoft.NET.Sdk" />

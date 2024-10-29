@@ -2,6 +2,8 @@ using FactorInvesting.Modules.Assets.Domain.Securities;
 
 using FluentAssertions;
 
+using Xunit;
+
 namespace FactorInvesting.Modules.Assets.Tests.UnitTests.Domain.Securities;
 
 public class SecurityTest

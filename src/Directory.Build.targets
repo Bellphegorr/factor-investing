@@ -1,0 +1,38 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="**\*.sql" CopyToOutputDirectory="PreserveNewest" />
+    <None Remove="bin\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(TestProject)' == 'true' or '$(OutputType)' == 'Exe'">
+    <IsPackable>False</IsPackable>
+  </PropertyGroup>
+  <PropertyGroup>
+    <BBDomainPath>$(MSBuildThisFileDirectory)\BuildingBlocks\Domain\*.csproj</BBDomainPath>
+    <BBApplicationPath>$(MSBuildThisFileDirectory)\BuildingBlocks\Application\*.csproj</BBApplicationPath>
+    <BBInfrastructurePath>$(MSBuildThisFileDirectory)\BuildingBlocks\Infrastructure\*.csproj</BBInfrastructurePath>
+  </PropertyGroup>
+  <ItemGroup Condition="$(MSBuildProjectName.EndsWith('API'))">
+    <ProjectReference Include="..\..\Modules\**\Infrastructure\*.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="$(MSBuildProjectFullPath.Contains('BuildingBlocks')) and $(MSBuildProjectName.EndsWith('Application'))">
+    <ProjectReference Include="$(BBDomainPath)" />
+  </ItemGroup>
+  <ItemGroup Condition="$(MSBuildProjectFullPath.Contains('BuildingBlocks')) and $(MSBuildProjectName.EndsWith('Infrastructure'))">
+    <ProjectReference Include="$(BBApplicationPath)" />
+  </ItemGroup>
+  <ItemGroup Condition="$(MSBuildProjectFullPath.Contains('Modules')) and $(MSBuildProjectName.EndsWith('Domain'))">
+    <ProjectReference Include="$(BBDomainPath)" />
+  </ItemGroup>
+  <ItemGroup Condition="$(MSBuildProjectFullPath.Contains('Modules')) and $(MSBuildProjectName.EndsWith('Application'))">
+    <ProjectReference Include="$(BBApplicationPath)" />
+    <ProjectReference Include="..\Domain\*.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="$(MSBuildProjectFullPath.Contains('Modules')) and $(MSBuildProjectName.EndsWith('Infrastructure'))">
+    <ProjectReference Include="$(BBInfrastructurePath)" />
+    <ProjectReference Include="..\Application\*.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="$(MSBuildProjectFullPath.Contains('Modules')) and $(MSBuildProjectName.EndsWith('UnitTests.Domain'))">
+    <ProjectReference Include="..\..\..\Domain\*.csproj" />
+  </ItemGroup>
+</Project>
