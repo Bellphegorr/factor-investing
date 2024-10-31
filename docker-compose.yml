@@ -3,9 +3,21 @@ services:
     container_name: factor-investing-api
     build: 
       context: ./src/
-      target: dev
+      target: final
     ports:
       - "5000:5000"
+    networks:
+      - factor-investing-network
+    depends_on:
+      - database
+    restart: on-failure
+  dev:
+    container_name: factor-investing-api-dev
+    build: 
+      context: ./src/
+      target: dev
+    ports:
+      - "5001:5000"
     volumes:
       - ./src:/src
       - nuget-packages:/root/.nuget/packages
@@ -13,6 +25,12 @@ services:
       - factor-investing-network
     depends_on:
       - database
+    restart: on-failure
+  test:
+    container_name: factor-investing-api-test
+    build: 
+      context: ./src/
+      target: test
     restart: on-failure
   database:
     container_name: factor-investing-database

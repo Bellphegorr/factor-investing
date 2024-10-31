@@ -10,6 +10,13 @@ EXPOSE 5000
 RUN dotnet restore "Apps/API/FactorInvesting.Apps.API.csproj"
 ENTRYPOINT ["dotnet", "watch", "--non-interactive", "--project", "Apps/API", "run", "--urls", "http://0.0.0.0:5000"]
 
+# From to make unit tests
+FROM build as test
+WORKDIR /src
+COPY . .
+RUN dotnet restore "Apps/API/FactorInvesting.Apps.API.csproj"
+ENTRYPOINT [ "dotnet", "test", "--logger:trx" ]
+
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app/out ./
