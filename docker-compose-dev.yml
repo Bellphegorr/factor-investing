@@ -3,9 +3,12 @@ services:
     container_name: factor-investing-api
     build: 
       context: ./src/
-      target: final
+      target: dev
     ports:
       - "5000:5000"
+    volumes:
+      - ./src:/src
+      - nuget-packages:/root/.nuget/packages
     networks:
       - factor-investing-network
     depends_on:
@@ -28,4 +31,5 @@ services:
 networks:
   factor-investing-network:
 volumes:
+  nuget-packages:
   postgres-data:
