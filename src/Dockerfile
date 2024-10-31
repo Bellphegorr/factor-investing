@@ -14,7 +14,6 @@ ENTRYPOINT ["dotnet", "watch", "--non-interactive", "--project", "Apps/API", "ru
 FROM build as test
 WORKDIR /src
 COPY . .
-RUN dotnet restore "Apps/API/FactorInvesting.Apps.API.csproj"
 ENTRYPOINT [ "dotnet", "test", "--logger:trx" ]
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
