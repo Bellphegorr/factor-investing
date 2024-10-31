@@ -1,0 +1,7 @@
+services:
+  test:
+    container_name: factor-investing-api-test
+    build: 
+      context: ./src/
+      target: test
+    restart: on-failure

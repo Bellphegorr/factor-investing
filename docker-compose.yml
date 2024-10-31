@@ -26,12 +26,6 @@ services:
     depends_on:
       - database
     restart: on-failure
-  test:
-    container_name: factor-investing-api-test
-    build: 
-      context: ./src/
-      target: test
-    restart: on-failure
   database:
     container_name: factor-investing-database
     image: postgres:12
