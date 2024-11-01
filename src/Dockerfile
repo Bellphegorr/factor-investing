@@ -2,17 +2,17 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS base
 WORKDIR /app
 COPY . ./
 
-FROM base as dev
+FROM base AS dev
 WORKDIR /app
 EXPOSE 5000
 RUN dotnet restore "Apps/API/FactorInvesting.Apps.API.csproj"
 ENTRYPOINT ["dotnet", "watch", "--non-interactive", "--project", "Apps/API", "run", "--urls", "http://0.0.0.0:5000"]
 
-FROM base as test
+FROM base AS test
 WORKDIR /app
 ENTRYPOINT [ "dotnet", "test", "--logger:trx" ]
 
-FROM base as publish
+FROM base AS publish
 WORKDIR /app
 RUN dotnet publish "Apps/API/FactorInvesting.Apps.API.csproj" -c Release -o out
 
