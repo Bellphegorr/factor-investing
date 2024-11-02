@@ -12,8 +12,6 @@ internal sealed class MediatorModule : Autofac.Module
 {
     protected override void Load(ContainerBuilder builder)
     {
-        var thisAssembly = typeof(MediatorModule).Assembly;
-        var services = new ServiceCollection();
         var mediatorOpenTypes = new[]
         {
             typeof(IRequestHandler<,>),
@@ -27,10 +25,11 @@ internal sealed class MediatorModule : Autofac.Module
             typeof(ICommandHandler<>),
             typeof(ICommandHandler<,>)
         };
+        var services = new ServiceCollection();
         foreach (var mediatorOpenType in mediatorOpenTypes)
         {
             builder
-                .RegisterAssemblyTypes(thisAssembly, Assemblies.Application)
+                .RegisterAssemblyTypes(ThisAssembly, Assemblies.Application)
                 .AsClosedTypesOf(mediatorOpenType)
                 .AsImplementedInterfaces();
         }
@@ -42,6 +41,12 @@ internal sealed class MediatorModule : Autofac.Module
             .As(typeof(IPipelineBehavior<,>));
         builder
             .RegisterGeneric(typeof(RequestPreProcessorBehavior<,>))
+            .As(typeof(IPipelineBehavior<,>));
+        builder
+            .RegisterGeneric(typeof(RequestExceptionActionProcessorBehavior<,>))
+            .As(typeof(IPipelineBehavior<,>));
+        builder
+            .RegisterGeneric(typeof(RequestExceptionProcessorBehavior<,>))
             .As(typeof(IPipelineBehavior<,>));
         builder.Populate(services);
     }
