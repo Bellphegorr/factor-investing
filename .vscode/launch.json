@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "name": "Docker .NET Attach (Preview)",
+      "type": "docker",
+      "request": "attach",
+      "platform": "netCore",
+      "sourceFileMap": {
+        "/app": "${workspaceFolder}/src"
+      },
+      "netCore": {
+        "debuggerPath": "/remote_debugger/vsdbg"
+      }
+    }
+  ]
+}

@@ -1,18 +1,21 @@
 services:
   api:
     container_name: factor-investing-api
-    build: 
+    build:
       context: ./src/
       target: final
       args:
-        - CONFIGURATION=Release
+        - CONFIGURATION=Debug
     ports:
-      - "5000:5000"
+      - 5000:5000
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
     networks:
       - factor-investing-network
     depends_on:
       - database
-    restart: on-failure
   database:
     container_name: factor-investing-database
     image: postgres:12

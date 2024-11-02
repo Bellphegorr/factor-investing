@@ -14,7 +14,8 @@ ENTRYPOINT [ "dotnet", "test", "--logger:trx" ]
 
 FROM base AS publish
 WORKDIR /app
-RUN dotnet publish "Apps/API/FactorInvesting.Apps.API.csproj" -c Release -o out
+ARG CONFIGURATION=Release
+RUN dotnet publish "Apps/API/FactorInvesting.Apps.API.csproj" -c $CONFIGURATION -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
