@@ -1,5 +1,6 @@
 services:
   api:
+    image: 127.0.0.1:9000/stackdemo #test swarm
     container_name: factor-investing-api
     build: 
       context: ./src/
@@ -29,5 +30,7 @@ services:
     restart: on-failure
 networks:
   factor-investing-network:
+    driver: overlay #test swarm
+    attachable: true #test swarm
 volumes:
   postgres-data:
