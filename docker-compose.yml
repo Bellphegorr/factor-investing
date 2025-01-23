@@ -28,9 +28,18 @@ services:
     networks:
       - factor-investing-network
     restart: on-failure
+  migrator:
+    container_name: factor-investing-migrator
+    build:
+      context: ./src/
+      target: migration
+    depends_on:
+      - database
+    networks:
+      - factor-investing-network
 networks:
   factor-investing-network:
-    driver: overlay #test swarm
-    attachable: true #test swarm
+    # driver: overlay #test swarm
+    # attachable: true #test swarm
 volumes:
   postgres-data:

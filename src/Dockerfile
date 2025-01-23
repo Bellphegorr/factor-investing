@@ -12,9 +12,15 @@ FROM base AS test
 WORKDIR /app
 ENTRYPOINT [ "dotnet", "test", "--logger:trx" ]
 
+FROM base as migration
+WORKDIR /app
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="/root/.dotnet/tools:${PATH}"
+ENTRYPOINT [ "dotnet", "ef", "database", "update", "--project", "Modules/Assets/Infrastructure"] 
+
 FROM base AS publish
 WORKDIR /app
-ARG CONFIGURATION=Release
+ARG CONFIGURATION
 RUN dotnet publish "Apps/API/FactorInvesting.Apps.API.csproj" -c $CONFIGURATION -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
