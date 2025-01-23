@@ -20,7 +20,7 @@ ENTRYPOINT [ "dotnet", "ef", "database", "update", "--project", "Modules/Assets/
 
 FROM base AS publish
 WORKDIR /app
-ARG CONFIGURATION
+ARG CONFIGURATION=Release
 RUN dotnet publish "Apps/API/FactorInvesting.Apps.API.csproj" -c $CONFIGURATION -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
