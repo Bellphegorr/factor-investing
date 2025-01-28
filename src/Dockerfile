@@ -12,7 +12,7 @@ FROM base AS test
 WORKDIR /app
 ENTRYPOINT [ "dotnet", "test", "--logger:trx" ]
 
-FROM base as migration
+FROM base AS migration
 WORKDIR /app
 RUN dotnet tool install --global dotnet-ef
 ENV PATH="/root/.dotnet/tools:${PATH}"

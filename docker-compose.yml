@@ -1,19 +1,18 @@
 services:
   api:
-    image:  factor-investing-api
-    container_name: factor-investing-api
-    build: 
-      context: ./src/
-      target: final
-      args:
-        - CONFIGURATION=Release
+    image:  bellphegorr/factor-investing:api-latest
     ports:
       - "5000:5000"
     networks:
       - factor-investing-network
     depends_on:
       - database
-    restart: on-failure
+  migrator:
+    image: bellphegorr/factor-investing:migrator-latest
+    depends_on:
+      - database
+    networks:
+      - factor-investing-network
   database:
     container_name: factor-investing-database
     image: postgres:12
@@ -28,18 +27,9 @@ services:
     networks:
       - factor-investing-network
     restart: on-failure
-  migrator:
-    container_name: factor-investing-migrator
-    build:
-      context: ./src/
-      target: migration
-    depends_on:
-      - database
-    networks:
-      - factor-investing-network
 networks:
   factor-investing-network:
-    # driver: overlay #test swarm
-    # attachable: true #test swarm
+    driver: overlay
+    attachable: true
 volumes:
   postgres-data:
