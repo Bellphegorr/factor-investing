@@ -14,7 +14,6 @@ services:
     networks:
       - factor-investing-network
   database:
-    container_name: factor-investing-database
     image: postgres:12
     environment:
       POSTGRES_USER: postgres
