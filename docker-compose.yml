@@ -1,7 +1,6 @@
-version: '3.8'
 services:
   api:
-    image:  bellphegorr/factor-investing:api-latest
+    image: bellphegorr/factor-investing:api-latest
     ports:
       - "5000:5000"
     networks:
