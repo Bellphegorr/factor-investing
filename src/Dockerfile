@@ -6,7 +6,7 @@ FROM base AS dev
 WORKDIR /app
 EXPOSE 5000
 RUN dotnet restore "Apps/API/FactorInvesting.Apps.API.csproj"
-ENTRYPOINT ["dotnet", "watch", "--non-interactive", "--project", "Apps/API", "run", "--urls", "http://0.0.0.0:5000"]
+ENTRYPOINT ["sleep", "infinity"]
 
 FROM base AS test
 WORKDIR /app

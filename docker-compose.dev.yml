@@ -7,8 +7,9 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./src:/app
+      - .:/app
       - nuget-packages:/root/.nuget/packages
+    working_dir: /app
     networks:
       - factor-investing-network
     depends_on:
