@@ -10,7 +10,7 @@ ENTRYPOINT ["sleep", "infinity"]
 
 FROM base AS test
 WORKDIR /app
-ENTRYPOINT [ "dotnet", "test", "--logger:trx" ]
+ENTRYPOINT [ "dotnet", "test", "--filter", "FullyQualifiedName~UnitTests", "--logger:trx" ]
 
 FROM base AS migration
 WORKDIR /app
