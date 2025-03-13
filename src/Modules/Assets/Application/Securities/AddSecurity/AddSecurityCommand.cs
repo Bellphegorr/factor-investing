@@ -1,7 +1,7 @@
 using FactorInvesting.BuildingBlocks.Application.Contracts;
 using FactorInvesting.Modules.Assets.Domain.Securities;
 
-namespace FactorInvesting.Modules.Assets.Application.Assets.Securities.AddSecurity;
+namespace FactorInvesting.Modules.Assets.Application.Securities.AddSecurity;
 
 public class AddSecurityCommand : ICommand
 {

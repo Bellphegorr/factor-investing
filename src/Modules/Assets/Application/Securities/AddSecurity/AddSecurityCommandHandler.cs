@@ -1,7 +1,7 @@
 using CompanyName.MyMeetings.Modules.Administration.Application.Configuration.Commands;
 using FactorInvesting.Modules.Assets.Domain.Securities;
 
-namespace FactorInvesting.Modules.Assets.Application.Assets.Securities.AddSecurity;
+namespace FactorInvesting.Modules.Assets.Application.Securities.AddSecurity;
 
 internal sealed class AddSecurityCommandHandler(ISecurityRepository securityRepository)
     : ICommandHandler<AddSecurityCommand>

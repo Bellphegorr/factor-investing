@@ -2,7 +2,7 @@ using Dapper;
 using FactorInvesting.BuildingBlocks.Application.Configuration.Queries;
 using FactorInvesting.BuildingBlocks.Application.Data;
 
-namespace FactorInvesting.Modules.Assets.Application.Assets.Securities.GetSecurities;
+namespace FactorInvesting.Modules.Assets.Application.Securities.GetSecurities;
 
 internal sealed class GetSecuritiesQueryHandler(ISqlConnectionFactory sqlConnectionFactory)
     : IQueryHandler<GetSecuritiesQuery, IEnumerable<SecuritiesResponse>>

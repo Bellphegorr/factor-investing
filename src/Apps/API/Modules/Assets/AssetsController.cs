@@ -1,6 +1,6 @@
-using FactorInvesting.Modules.Assets.Application.Assets.Securities.AddSecurity;
-using FactorInvesting.Modules.Assets.Application.Assets.Securities.GetSecurities;
 using FactorInvesting.Modules.Assets.Application.Contracts;
+using FactorInvesting.Modules.Assets.Application.Securities.AddSecurity;
+using FactorInvesting.Modules.Assets.Application.Securities.GetSecurities;
 using FactorInvesting.Modules.Assets.Domain.Securities;
 using Microsoft.AspNetCore.Mvc;
 
