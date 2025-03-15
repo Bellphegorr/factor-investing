@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FactorInvesting.Modules.Assets.Infrastructure;
 
-internal sealed class AssetsContext(DbContextOptions<AssetsContext> options) : DbContext(options)
+public sealed class AssetsContext(DbContextOptions<AssetsContext> options) : DbContext(options)
 {
     public DbSet<Security> Securities { get; set; }
 

@@ -15,6 +15,12 @@ services:
     depends_on:
       - database
     restart: on-failure
+  migrator:
+    image: bellphegorr/factor-investing:migrator-latest
+    networks:
+      - factor-investing-network
+    depends_on:
+      - database
   database:
     container_name: factor-investing-database
     image: postgres:12

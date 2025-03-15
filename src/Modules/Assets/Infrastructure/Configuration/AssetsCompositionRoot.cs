@@ -13,6 +13,6 @@ internal sealed class AssetsCompositionRoot
 
     internal static ILifetimeScope BeginLifetimeScope()
     {
-    return s_container!.BeginLifetimeScope();
+        return s_container!.BeginLifetimeScope();
     }
 }
