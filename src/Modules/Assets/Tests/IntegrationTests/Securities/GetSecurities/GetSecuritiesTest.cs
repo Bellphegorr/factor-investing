@@ -14,11 +14,8 @@ public sealed class GetSecuritiesTest : TestBase
     [Fact]
     public async Task GetSecurities()
     {
-        // Arrange
-        this.AssetsContext.Securities.Add(
-            Security.Create(Guid.NewGuid(), "AAPL", SecurityTypes.Equity)
-        );
-        this.AssetsContext.SaveChanges();
+        AssetsContext.Securities.Add(Security.Create(Guid.NewGuid(), "AAPL", SecurityTypes.Equity));
+        AssetsContext.SaveChanges();
         var securities = await AssetsModule.ExecuteQueryAsync(new GetSecuritiesQuery());
         Assert.NotNull(securities);
         Assert.NotEmpty(securities);
