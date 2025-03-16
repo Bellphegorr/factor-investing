@@ -30,8 +30,6 @@ services:
       POSTGRES_DB: factor_investing
     ports:
       - "5432:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
     networks:
       - factor-investing-network
     restart: on-failure
