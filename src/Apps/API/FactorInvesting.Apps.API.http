@@ -1,7 +1,7 @@
-@HostAddress = http://localhost:5000
-
-### Assets - Create
-POST {{HostAddress}}/api/assets
+@HostAddress = http://localhost:5032
 
 ### Assets - Get All
 GET {{HostAddress}}/api/assets
+
+### Assets - Create
+POST {{HostAddress}}/api/assets

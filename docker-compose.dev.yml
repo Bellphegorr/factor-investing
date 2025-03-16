@@ -1,11 +1,8 @@
 services:
   api:
-    container_name: factor-investing-api
     build: 
       context: ./src/
       target: dev
-    ports:
-      - "5000:5000"
     volumes:
       - .:/app
       - nuget-packages:/root/.nuget/packages
@@ -16,13 +13,14 @@ services:
       - database
     restart: on-failure
   migrator:
-    image: bellphegorr/factor-investing:migrator-latest
+    build: 
+      context: ./src/
+      target: migration
     networks:
       - factor-investing-network
     depends_on:
       - database
   database:
-    container_name: factor-investing-database
     image: postgres:12
     environment:
       POSTGRES_USER: postgres
