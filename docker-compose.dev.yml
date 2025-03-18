@@ -5,8 +5,6 @@ services:
       target: dev
     volumes:
       - .:/app
-      - nuget-packages:/root/.nuget/packages
-    working_dir: /app
     networks:
       - factor-investing-network
     depends_on:
@@ -33,6 +31,3 @@ services:
     restart: on-failure
 networks:
   factor-investing-network:
-volumes:
-  nuget-packages:
-  postgres-data:
