@@ -29,4 +29,5 @@ static void Configure()
     AssetsStartup.Initialize(connectionString);
 }
 
+//TODO Check if this is really necessary
 public partial class Program { }

@@ -8,13 +8,19 @@ using Xunit;
 
 namespace FactorInvesting.IntegrationTests.Securities.GetSecurities;
 
-public class GetSecuritiesTest(WebApplicationFactory<Program> factory)
-    : IClassFixture<WebApplicationFactory<Program>>
+public class GetSecuritiesTest : IClassFixture<CustomWebApplicationFactory<Program>>
 {
+    private readonly CustomWebApplicationFactory<Program> _customWebApplicationFactory;
+
+    public GetSecuritiesTest(CustomWebApplicationFactory<Program> customWebApplicationFactory)
+    {
+        _customWebApplicationFactory = customWebApplicationFactory;
+    }
+
     [Fact]
     public async Task GetEndpointsReturnSuccessAndCorrectContentType()
     {
-        var client = factory.CreateClient();
+        var client = _customWebApplicationFactory.CreateClient();
         var response = await client.GetAsync("/api/assets");
         response.EnsureSuccessStatusCode();
     }
