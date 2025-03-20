@@ -28,3 +28,5 @@ static void Configure()
         "Server=database;Database=factor_investing;User Id=postgres;Password=postgres;";
     AssetsStartup.Initialize(connectionString);
 }
+
+public partial class Program { }

@@ -16,6 +16,8 @@ public class AssetsController(IAssetsModule assetsModule) : ControllerBase
         var query = new GetSecuritiesQuery();
         var securities = await assetsModule.ExecuteQueryAsync(query);
         return Ok(securities);
+        // await Task.Delay(1000);
+        // return Ok("Hello World");
     }
 
     [HttpPost]
