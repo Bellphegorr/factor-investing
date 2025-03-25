@@ -1,42 +1,54 @@
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using FactorInvesting.Apps.API.Modules.Assets;
+using FactorInvesting.Modules.Assets.Infrastructure;
 using FactorInvesting.Modules.Assets.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using Testcontainers.PostgreSql;
 using Xunit;
 
 namespace FactorInvesting.IntegrationTests.Securities.GetSecurities;
 
-public class GetSecuritiesTest : IClassFixture<CustomWebApplicationFactory<Program>>
+public class GetSecuritiesTest(CustomWebApplicationFactory<Program> customWebApplicationFactory)
+    : IClassFixture<CustomWebApplicationFactory<Program>>
 {
-    private readonly CustomWebApplicationFactory<Program> _customWebApplicationFactory;
-
-    public GetSecuritiesTest(CustomWebApplicationFactory<Program> customWebApplicationFactory)
-    {
-        _customWebApplicationFactory = customWebApplicationFactory;
-    }
-
     [Fact]
     public async Task GetEndpointsReturnSuccessAndCorrectContentType()
     {
-        var client = _customWebApplicationFactory.CreateClient();
+        var client = customWebApplicationFactory.CreateClient();
         var response = await client.GetAsync("/api/assets");
         response.EnsureSuccessStatusCode();
     }
 }
 
-public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram>
+public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLifetime
     where TProgram : class
 {
+    private readonly PostgreSqlContainer _postgreSqlContainer = new PostgreSqlBuilder()
+        .WithDatabase("factor_investing")
+        .WithUsername("postgres")
+        .WithPassword("postgres")
+        .WithPortBinding(5432)
+        .Build();
+
+    public async Task InitializeAsync()
+    {
+        await _postgreSqlContainer.StartAsync();
+    }
+
+    async Task IAsyncLifetime.DisposeAsync()
+    {
+        await _postgreSqlContainer.DisposeAsync();
+    }
+
     protected override IHost CreateHost(IHostBuilder builder)
     {
-        builder.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-        builder.ConfigureContainer<ContainerBuilder>(containerBuilder =>
-        {
-            containerBuilder.RegisterModule(new AssetsAutoFacModule());
-            AssetsStartup.Initialize("");
-        });
-        return base.CreateHost(builder);
+        var connectionString = _postgreSqlContainer.GetConnectionString();
+        Environment.SetEnvironmentVariable("ConnectionStrings:AssetsDb", connectionString);
+        var host = base.CreateHost(builder);
+        var scope = AssetsCompositionRoot.BeginLifetimeScope();
+        var dbContext = scope.Resolve<AssetsContext>();
+        dbContext.Database.Migrate();
+        return host;
     }
 }

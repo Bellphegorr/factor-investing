@@ -12,6 +12,8 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
     containerBuilder.RegisterModule(new AssetsAutoFacModule())
 );
 var app = builder.Build();
+var configuration = app.Services.GetRequiredService<IConfiguration>();
+var connectionString = configuration.GetConnectionString("AssetsDb");
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -19,15 +21,12 @@ if (app.Environment.IsDevelopment())
 }
 app.UseHttpsRedirection();
 app.MapControllers();
-Configure();
+Configure(connectionString!);
 app.Run();
 
-static void Configure()
+static void Configure(string connectionString)
 {
-    var connectionString =
-        "Server=database;Database=factor_investing;User Id=postgres;Password=postgres;";
     AssetsStartup.Initialize(connectionString);
 }
 
-//TODO Check if this is really necessary
 public partial class Program { }

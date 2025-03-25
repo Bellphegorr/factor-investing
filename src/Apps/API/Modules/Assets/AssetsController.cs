@@ -25,7 +25,7 @@ public class AssetsController(IAssetsModule assetsModule) : ControllerBase
         {
             Id = Guid.NewGuid(),
             Name = "Security Name",
-            Type = SecurityTypes.Equity
+            Type = SecurityTypes.Equity,
         };
         await assetsModule.ExecuteCommandAsync(command);
         return Ok();

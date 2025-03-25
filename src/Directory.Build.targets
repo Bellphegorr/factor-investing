@@ -35,4 +35,7 @@
   <ItemGroup Condition="$(MSBuildProjectFullPath.Contains('Modules')) and $(MSBuildProjectName.EndsWith('Tests'))">
     <ProjectReference Include="..\..\Infrastructure\*.csproj" />
   </ItemGroup>
+  <ItemGroup Condition="!$(MSBuildProjectFullPath.Contains('Modules')) and $(MSBuildProjectFullPath.Contains('Tests'))">
+    <ProjectReference Include="..\..\Apps\API\**\*.csproj" />
+  </ItemGroup>
 </Project>
