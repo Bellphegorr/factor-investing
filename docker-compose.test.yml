@@ -3,4 +3,3 @@ services:
     build: 
       context: ./src/
       target: test
-    restart: on-failure
