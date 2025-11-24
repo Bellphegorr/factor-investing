@@ -15,7 +15,7 @@ public class TestBase : IDisposable
     public TestBase()
     {
         ConnectionString =
-            "Server=database;Database=factor_investing;User Id=postgres;Password=postgres;";
+            "Server=::1;Database=factor_investing;User Id=postgres;Password=postgres;";
         AssetsStartup.Initialize(ConnectionString);
         AssetsModule = new AssetsModule();
         AssetsContext = new AssetsContext(

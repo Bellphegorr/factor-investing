@@ -14,7 +14,7 @@ ENTRYPOINT [ "dotnet", "test", "--filter", "FullyQualifiedName~UnitTests", "--lo
 
 FROM base AS migration
 WORKDIR /app
-RUN dotnet tool install --global dotnet-ef
+RUN dotnet tool install --global dotnet-ef --version 8.0.22
 ENV PATH="/root/.dotnet/tools:${PATH}"
 ENTRYPOINT [ "dotnet", "ef", "database", "update", "--project", "Modules/Assets/Infrastructure"] 
 
